@@ -38,7 +38,7 @@ class JSTab implements IMessageEditorTab
 	@Override
 	public boolean isEnabled(byte[] content, boolean isRequest)
 	{
-    return BurpExtender.exists_quoted(new String(content));
+    return BurpExtender.exists_quoted(new String(content)) != null;
 	}
 
 	@Override
