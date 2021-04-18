@@ -16,19 +16,19 @@ public class JSMenuFactory implements IContextMenuFactory {
 	public List<JMenuItem> createMenuItems(IContextMenuInvocation invocation) {
     int[] bounds = invocation.getSelectionBounds();
     if (bounds == null) {
-      BurpExtender.callbacks.printOutput("No string selected.");
+      BurpExtender.log("Not in message editor.");
       return null;
     }
     int start = bounds[0];
     int end = bounds[1];
     if (start == end) {
-      BurpExtender.callbacks.printOutput("No string selected.");
+      BurpExtender.log("Selection is empty.");
       return null;
     }
 
 		List<JMenuItem> listMenuItems = new ArrayList<JMenuItem>();
 		
-		JMenuItem jMenuItem = new JMenuItem("send to JS Unicode Decoder");
+		JMenuItem jMenuItem = new JMenuItem("Send to [JS Unicode Decoder]");
 		listMenuItems.add(jMenuItem);
 		
 		jMenuItem.addActionListener(new ActionListener() {

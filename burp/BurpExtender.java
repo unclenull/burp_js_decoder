@@ -22,12 +22,17 @@ public class BurpExtender implements IBurpExtender
     helpers = callbacks.getHelpers();
     errorStream = new PrintStream(callbacks.getStderr());
 
-    callbacks.printOutput(ExtenderName);
-    callbacks.printOutput(github);
+    log(ExtenderName);
+    log(github);
 
     callbacks.setExtensionName(ExtenderName);
     callbacks.registerMessageEditorTabFactory(new JSTabFactory());
     callbacks.registerContextMenuFactory(new JSMenuFactory());
+  }
+
+  public static void log(String msg) {
+    msg = String.format("[%s] %s", java.time.LocalDateTime.now().toString(), msg);
+    callbacks.printOutput(msg);
   }
 
   public static String decode(String text) {
